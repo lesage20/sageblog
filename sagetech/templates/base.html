@@ -1,0 +1,210 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	
+	<title>Sage Blog</title>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" media="screen">	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.bxslider.css' %}" media="screen">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}" media="screen">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}" media="screen">	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.theme.css' %}" media="screen">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/ticker-style.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen">
+	<link href="{% static 'tiny/styles/github.css' %}" rel="stylesheet">             {# github theme for highlightjs #}
+
+
+</head>
+<body>
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v7.0" nonce="d5lr2c16"></script>
+    
+    <!-- Container -->
+	<div id="container">
+
+		<!-- Header
+		    ================================================== -->
+		<header class="clearfix">
+			<!-- Bootstrap navbar -->
+			<nav class="navbar navbar-default navbar-static-top" role="navigation">
+
+				
+
+				<!-- Logo t -->
+				<div class="logo-advertisement">
+					<div class="container">
+
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<!-- <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt=""></a> -->
+						</div>
+							
+
+						
+				<!-- End Logo  -->
+
+				<!-- navbar list container -->
+				<div class="nav-list-container">
+					<div class="container">
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-left">
+
+								<li><a class="active" href="{% url 'index' %}">Home</a></li>
+								<li><a href="{% url 'tech' %}">blog</a></li>
+								<li><a href="{% url 'contact' %}">contact</a></li>
+								
+								
+
+							</ul>
+									{% if user.is_authenticated %}
+					
+								<div class="navbar-right" style='padding-top: 10px;'>
+									<ul>
+										<li class="btn btn-primary " style="margin-right:10px ;">
+											Connected as, {{request.user.username}} 
+										</li>
+										<li class="btn btn-success" style="margin-right:10px ;">
+											<a style="color: #fff;" href="{% url 'user-settings' %}">settings</a>
+										</li>
+
+										<li class="btn btn-danger"  >
+											<a style="color: #fff;" href="{% url 'logout' %}">Logout</a>
+										</li>
+
+										
+									</ul>
+								</div>
+						
+					
+						
+								
+								{% else %}
+								<div class="navbar-right" style='padding-top: 10px;'>
+									<span><a href="{% url 'login' %}" class=" btn btn-primary" style="margin-right: 20px;"> Login</a></span>
+									<span><a href="{% url 'register' %}" class="btn btn-success"> Register</a></span>
+								
+								</div>	
+								{% endif %}
+						</div>
+						<!-- /.navbar-collapse -->
+						
+					</div>
+				</div>
+				<!-- End navbar list container -->
+
+			</nav>
+			<!-- End Bootstrap navbar -->
+
+		</header>
+        <!-- End Header -->
+        <div style="margin-top:5px">
+        {% block content %}
+
+        {% endblock content %}
+		</div>
+
+		<!-- footer 
+			================================================== -->
+            <footer>
+                <div class="container">
+                    <div class="footer-widgets-part">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="widget text-widget">
+                                    <h1>About</h1>
+                                    <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. </p>
+                                    <p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. </p>
+                                </div>
+							</div>
+							<div class="col-md-3">
+								<div class="widget social-widget">
+                                    <h1>Stay Connected</h1>
+                                    <ul class="social-icons">
+                                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
+                                        <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#" class="vimeo"><i class="fa fa-vimeo-square"></i></a></li>
+                                        <li><a href="#" class="dribble"><i class="fa fa-dribbble"></i></a></li>
+                                        <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a href="#" class="flickr"><i class="fa fa-flickr"></i></a></li>
+                                        <li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
+                                    </ul>
+                                </div>
+							</div>
+                             <div class="col-md-3">
+								
+                                <div class="widget tags-widget">
+                                    <h1>Popular Tags</h1>
+                                    <ul class="tag-list">
+                                        <li><a href="#">News</a></li>
+                                        <li><a href="#">Fashion</a></li>
+                                        <li><a href="#">Politics</a></li>
+                                        <li><a href="#">Sport</a></li>
+                                        <li><a href="#">Videos</a></li>
+                                        <li><a href="#">Business</a></li>
+                                        <li><a href="#">Food</a></li>
+                                        <li><a href="#">Travel</a></li>
+                                        <li><a href="#">World</a></li>
+                                        <li><a href="#">Music</a></li>
+                                    </ul>
+                                </div>
+    
+                                
+    
+                            </div>
+                        </div>
+
+		
+
+                           
+                            
+                           
+                        </div>
+                </div>
+            </footer>
+            <!-- End footer -->
+    
+        </div>
+        <!-- End Container -->
+        
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.migrate.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.bxslider.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.ticker.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.imagesloaded.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.isotope.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/retina-1.1.0.min.js' %}"></script>
+		<script src="{% static 'tiny/highlight.pack.js' %}"></script>          {# required for syntax hightlighting #}
+    	<script>hljs.initHighlightingOnLoad();</script>
+        {% block script %}
+
+        {% endblock script %}
+        <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+    
+    </body>
+    </html>

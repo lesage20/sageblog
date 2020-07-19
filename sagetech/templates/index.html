@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+		<!-- block-wrapper-section
+			================================================== -->
+		<section class="block-wrapper shadow-white">
+
+			<div class="list-line-posts">
+				<div class="container">
+
+					<div class="owl-wrapper">
+						<div class="owl-carousel" data-num="4">
+
+							{% for post in articles %}
+	
+
+	
+								<div class="item list-post" style="width:258; height:83;">
+									<img src="{{post.image.url}}" alt="" width="80" height="60">
+									<div class="post-content" >
+										<a href="{% url 'tech' %}">News</a>
+										<h2><a href="{{ post.get_absolute_url }}">{{post.titre}} </a></h2>
+										<ul class="post-tags">
+											<li><i class="fa fa-clock-o"></i>{{post.date}}</li>
+										</ul>
+									</div>
+								</div>
+							{% endfor %}
+
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	
+		<!-- block-wrapper-section
+			================================================== -->
+		<section class="block-wrapper">
+			<div class="container">
+				<div class="row">
+
+					
+
+					<div class="col-md-9 col-sm-8">
+
+						<!-- block content -->
+						<div class="block-content">
+
+							<!-- slider-caption-box -->
+							<div class="slider-caption-box">
+								<ul class="filter-slider-posts">
+									<li><a href="#">Today</a></li>
+									<li><a class="active" href="#">Software</a></li>
+									<li><a href="#">Internet</a></li>
+									<li><a href="#">Mobile</a></li>
+									<li><a href="#">Gadgets</a></li>
+									<li><a href="#">Tech Industry</a></li>
+								</ul>
+								<div class="slider-holder">
+									<span>top Stories</span>
+									<ul class="slider-call">
+										
+										{% for one in one_article %}
+											
+										
+											
+										<li>
+											<div class="news-post standard-post">
+												<div class="post-gallery">
+													<img src="{{one.image.url}}" alt="">
+												</div>
+												<div class="post-content">
+													<h2><a href="{{one.get_absolute_url}}">{{one.}}</a></h2>
+													<ul class="post-tags">
+														<li><i class="fa fa-clock-o"></i>{{one.date}}</li>
+														<li><i class="fa fa-user"></i>by <a href="#">{{one.auteur}}</a></li>
+														<li><a href="#"><i class="fa fa-comments-o"></i><span>{{one.nb_comment}}</span></a></li>
+														<li><i class="fa fa-eye"></i>872</li>
+													</ul>
+												</div>
+											</div>
+										</li>
+										{% endfor %}
+									</ul>
+								</div>
+								<div id="bx-pager">
+									{% for one in one_article %}
+									<a data-slide-index="{{forloop.counter}}" href="">
+										{{one.titre}}
+										<span><i class="fa fa-clock-o"></i>27 may 2013</span>
+									</a>
+									{%endfor%}	
+								</div>
+								<div class="center-butt">
+									<a class="more-news" href="{% url 'tech' %}">More Software News</a>
+								</div>
+							</div>
+							<!-- End slider-caption-box -->
+
+							
+							
+							<!-- grid box -->
+							<div class="grid-box">
+
+								<div class="title-section">
+									<h1><span>Gatgets &amp; Apps</span></h1>
+								</div>
+
+								<div class="row">
+
+									{% for article in articles %}
+											<div class="col-md-4">
+												<div class="news-post standard-post">
+													<div class="post-gallery">
+														<img src="{{article.image.url}}" alt="" width=262 height="175">
+													</div>
+													<div class="post-content">
+														<h2><a href="{{article.get_absolute_url}}">{{article.titre}}</a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>{{article.date}}</li>
+															<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+	
+										{% endfor %}
+									
+
+								</div>
+
+								<div class="row">
+									
+									{% for popular in populars %}
+										
+									
+									<div class="col-md-4">
+										<div class="news-post standard-post">
+											<div class="post-gallery">
+												<img src="{{popular.image.url}}" alt="" width=262 height="175">
+											</div>
+											<div class="post-content">
+												<h2><a href="{{popular.get_absolute_url}}">{{popular.titre}}</a></h2>
+												<ul class="post-tags">
+													<li><i class="fa fa-clock-o"></i>{{popular.date}}</li>
+													<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+										
+									
+								</div>
+
+							</div>
+							<!-- End grid box -->
+
+						
+							<!-- article box -->
+							<div class="article-box">
+								<div class="title-section">
+									<h1><span>Latest Articles</span></h1>
+								</div>
+								
+								{% for latest in latests %}
+									
+								
+									
+								<div class="news-post standard-post2">
+									<div class="post-gallery">
+										<img src="{{latest.image.url}}" alt="">
+									</div>
+									<div class="post-title">
+										<h2><a href="{{latest.get_absolute_url}}">{{latest.titre}}</a></h2>
+										<ul class="post-tags">
+											<li><i class="fa fa-clock-o"></i>{{latest.date}}</li>
+											<li><i class="fa fa-user"></i>by <a href="#">{{latest.auteur}}</a></li>
+											<li><a href="#"><i class="fa fa-comments-o"></i><span>{{latest.nb_comment}}</span></a></li>
+											<li><i class="fa fa-eye"></i>{{latest.nb_vue}}</li>
+										</ul>
+									</div>
+									<div class="post-content">
+										<p>{{latest.description}}</p>
+										<a href="{{latest.get_absolute_url}}" class="read-more-button"><i class="fa fa-angle-right"></i><span>Read More</span></a>
+									</div>
+								</div>
+								
+								
+								{% endfor %}
+							</div>
+							<!-- End article box -->
+
+							<!-- Pagination box -->
+							<div class="pagination-box">
+								<ul class="pagination-list">
+									<li><a class="active" href="#">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><span>...</span></li>
+									<li><a href="#">9</a></li>
+									<li><a href="#">Next</a></li>
+								</ul>
+								<p>Page 1 of 9</p>
+							</div>
+							<!-- End Pagination box -->
+
+						</div>
+						<!-- End block content -->
+
+					</div>
+
+					{% include 'newsletter.html' %}
+
+				</div>
+
+			</div>
+		</section>
+		<!-- End block-wrapper-section -->
+
+		{% endblock content %}
