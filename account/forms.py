@@ -56,6 +56,7 @@ class CreateUser(UserCreationForm):
         raise forms.ValidationError('This username  is already in use. Try another')
         
 class NewsletterForm(forms.Form, ModelForm):
+
     class Meta:
         model = NewsLetter
         fields = ['email']
