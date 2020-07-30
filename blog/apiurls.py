@@ -11,13 +11,7 @@ router.register('category',CategoryView)
 router.register('tag',TagView)
 router.register('auteur',AuteurView)
 
+urlpatterns = []
 
-urlpatterns = [
-    path('single/<int:pk>', views.single, name="single"),
-    # path('like', views.like_view, name="like-article"),    
-    path('', views.tech, name="tech"),
-    path('api/', include('blog.apiurls')),
-    
-    path('search', views.search, name="search"),
-    
-]
+
+urlpatterns += router.urls 
