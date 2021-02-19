@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block vuescript %}
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+{% endblock vuescript %}
+
 {% block content %}
 
 		<!-- block-wrapper-section
@@ -9,7 +16,9 @@
 		<!-- block-wrapper-section
 			================================================== -->
 		<section class="block-wrapper">
-			<div class="container">
+			
+
+			<div class="container" id="app">
 				<div class="row">
 
 					
@@ -89,3 +98,32 @@
 		</section>
 		<!-- End block-wrapper-section -->
 {% endblock content %}
+
+
+{% block vue %}
+	<script>
+		app = new Vue({
+			el: '#app',
+			data: {
+			
+			articles: [],
+			base_url : window.location.protocol + "//" + window.location.host
+		},
+		delimiters : ["${", "}"],
+		
+		mounted(){
+			this.getArticles()
+		},
+		methods: {
+			getArticles: function (){
+				axios.get(this.base_url + '/blog/api/article/?format=json')
+					.then(response => (this.articles = response.data))
+			}
+		}
+		})
+	</script>
+
+
+
+{% endblock vue %}
+	

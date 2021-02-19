@@ -13,7 +13,7 @@ class LikeSerialzer(serializers.ModelSerializer):
 
 class CommentSerialzer(serializers.ModelSerializer):
     class Meta:
-        model = models.Comment
+        model = models.Comment  
         fields = '__all__'
 
 class ArticleSerialzer(serializers.ModelSerializer):

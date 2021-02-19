@@ -22,6 +22,12 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/owl.theme.css' %}" media="screen">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/ticker-style.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen">
+	
+	{% block vuescript %}
+		
+	{% endblock vuescript %}
+		
+
 	<link href="{% static 'tiny/styles/github.css' %}" rel="stylesheet">             {# github theme for highlightjs #}
 
 
@@ -206,7 +212,35 @@
 		<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 		
 		
+		{% block vue %}
+			
+			<script>
+					app = new Vue({
+		el: '#app',
+		data: {
+			articles: [],
+			base_url = window.location.protocol + "//" + window.location.host
+		},
+		delimiters : ["${", "}"],
+		
+		mounted(){
+			this.getArticles()
+		},
+		methods: {
+			getArticles: function (){
+				axios
+					.get(base_url + '/blog/api/article/?format=json')
+					.then(response => (this.articles = response.data))
+			}
+		}
+
+	})
+			</script>
+		{% endblock vue %}
+			
 
     
     </body>
-    </html>
+	</html>
+	
+
