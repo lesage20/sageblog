@@ -40,21 +40,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # my apps
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
     'account.apps.AccountConfig',
+    'proposition.apps.PropositionConfig',
     'phone_field',
     'tinymce',
-    'rest_framework'
-    
+    'rest_framework',
+    "corsheaders",
+    'rest_framework.authtoken',
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -167,6 +171,8 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': True,
     'statusbar': True,
 }
-#heroku part
-#activate heroku
+
+CORS_ALLOW_ALL_ORIGINS = True
+# heroku part
+# activate heroku
 django_heroku.settings(locals())

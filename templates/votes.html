@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<div class="vote" style="margin-top: 100px">
+  <h1>Propositions</h1>
+  <div class="row">
+    {% for prop in props %}
+    <div class="col-md-4">
+      <div class="card px-2 mx-2">
+        <h3>{{prop.title}}</h3>
+        <p>{{prop.description}}</p>
+        <div>
+          <h4>{{ prop.downvotes.all.count}} Downvotes</h4>
+          {% for down in prop.downvotes.all %} {{down}} <br />
+          <h4>{{ prop.upvotes.all.count}} Upvotes</h4>
+          {% endfor %} {% for up in prop.upvotes.all %} {{up}} <br />
+          {% endfor %}
+        </div>
+        <hr />
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
